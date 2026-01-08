@@ -5,7 +5,8 @@ import logging
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
-from homeassistant.core import Config, HomeAssistant
+from typing import Any
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import Entity
 
 from .const import (
@@ -50,7 +51,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_platform(
-    hass: HomeAssistant, config: Config, async_add_entities, discovery_info=None
+    hass: HomeAssistant, config: dict[str, Any], async_add_entities, discovery_info=None
 ):
     """Setup NiceHash sensor platform"""
     _LOGGER.debug("Creating new NiceHash sensor components")

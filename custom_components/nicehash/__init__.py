@@ -8,7 +8,8 @@ import logging
 import voluptuous as vol
 
 from homeassistant.const import CONF_DEVICES, CONF_TIMEOUT
-from homeassistant.core import Config, HomeAssistant
+from typing import Any
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers import discovery
 import homeassistant.helpers.config_validation as cv
 from homeassistant.exceptions import PlatformNotReady
@@ -54,7 +55,7 @@ CONFIG_SCHEMA = vol.Schema(
 )
 
 
-async def async_setup(hass: HomeAssistant, config: Config):
+async def async_setup(hass: HomeAssistant, config: dict[str, Any]):
     """Set up this integration"""
     if hass.data.get(DOMAIN) is None:
         hass.data.setdefault(DOMAIN, {})
